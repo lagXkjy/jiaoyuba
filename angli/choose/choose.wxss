@@ -1,0 +1,38 @@
+/* angli/choose/choose.wxss */
+@import "../../pages/index/index.wxss";
+@import "../../newpage/envelope/envelope.wxss";
+.choose-btn{
+  width: 40rpx;
+  margin-right: 30rpx;
+}
+.footer{
+  position: absolute;
+  bottom:0;
+}
+.hei-110{
+  height: 110rpx;
+}
+.wid16{
+  width: 16%;
+}
+.wid40{
+  width: 40%;
+}
+.wid44{
+  width: 44%;
+}
+page{
+  width: 100%;
+  height: inherit;
+  padding-bottom: 150rpx;
+}
+.wid100{
+ 
+}
+view{
+  box-sizing: border-box;
+}
+.fix-bottom{
+  position: fixed;
+  bottom: 0;
+}

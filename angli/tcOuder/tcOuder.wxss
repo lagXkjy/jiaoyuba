@@ -1,0 +1,24 @@
+/* angli/tcOuder/tcOuder.wxss */
+@import '../../Kecheng/TaoOuder/TaoOuder.wxss';
+.outer-right{
+  position: relative;
+}
+.price{
+  position: absolute;
+  bottom: 0;
+}
+.wid60{
+  width:60%;
+  padding-left: 180rpx;
+  box-sizing: border-box;
+  padding-top: 20rpx;
+}
+.footer{
+  line-height: inherit;
+}
+.jiantou{
+  width:16rpx;
+}
+page{
+  padding-bottom: 150rpx;
+}

@@ -1,0 +1,482 @@
+/**app.wxss**/
+
+.container {
+  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.clear-float:after {
+  display: block;
+  clear: both;
+  content: "";
+  visibility: hidden;
+  height: 0;
+}
+
+/* 字体 */
+
+page {
+  font-family: "黑体";
+}
+
+/*颜色  */
+
+.allBtn {
+  background-color: #ea5421;
+  color: #fff;
+}
+
+page {
+  background-color: #efeff4;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.bg-green {
+  background-color: #ea5421;
+}
+
+.bg-yellow {
+  background-color: #ffb638;
+}
+
+.bo-green {
+  border: 1px solid #ea5421;
+}
+
+.bg-gray {
+  background-color: #b2b2b2 !important;
+}
+
+.green {
+  color: #ea5421;
+}
+
+.gray {
+  color: #b2b2b2;
+  width: 20%;
+}
+
+.c-gray {
+  color: #b2b2b2;
+}
+
+.white {
+  color: #fff;
+}
+
+.input {
+  color: #171717;
+}
+
+/*结构  */
+
+.flx {
+  display: flex;
+  display: -webkit-flex;
+}
+
+.auto {
+  margin: 0 auto;
+}
+
+.bo-btm {
+  border-bottom: none !important;
+}
+
+.bo-top {
+  border-top: 1px solid #bfbfc3;
+}
+
+.bo-top-hui {
+  border-top: 1px solid #e3e3e3;
+}
+
+/**app.wxss**/
+
+.container {
+  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+/* 字体 */
+
+page {
+  font-family: "黑体";
+}
+
+/*颜色  */
+
+.allBtn {
+  background-color: #ea5421;
+  color: #fff;
+}
+
+page {
+  background-color: #efeff4;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.bg-green {
+  background-color: #ea5421;
+}
+
+.bg-dim-green {
+  background-color: #ff936d;
+}
+
+.bg-yellow {
+  background-color: #ffb638;
+}
+
+.bo-green {
+  border: 1px solid #ea5421;
+}
+
+.green {
+  color: #ea5421;
+}
+
+.huiSea {
+  color: #666;
+}
+
+.gray {
+  color: #b2b2b2;
+  width: 20%;
+}
+
+.white {
+  color: #fff;
+}
+
+.input {
+  color: #171717;
+}
+
+/*结构  */
+
+.flx {
+  display: flex;
+  display: -webkit-flex;
+}
+
+.auto {
+  margin: 0 auto;
+}
+
+.bo-btm {
+  border-bottom: none !important;
+}
+
+.bo-top {
+  border-top: 1px solid #bfbfc3;
+}
+
+.bo-top-hui {
+  border-top: 1px solid #e3e3e3;
+}
+
+/*字体大小  */
+
+.fon-24 {
+  font-size: 24rpx;
+}
+
+.fon-30 {
+  font-size: 30rpx;
+}
+
+.center {
+  justify-content: center;
+  -webkit-justify-content: center;
+}
+
+.flex {
+  display: flex;
+  display: -webkit-flex;
+}
+
+.flex1 {
+  flex: 1;
+  -webkit-flex: 1;
+}
+
+.between {
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+}
+
+.b-center {
+  justify-content: center;
+  -webkit-justify-content: center;
+}
+
+.center {
+  align-items: center;
+  -webkit-align-items: center;
+}
+
+.h-center {
+  justify-content: center;
+  -webkit-justify-content: center;
+}
+
+.v-center {
+  align-items: center;
+  -webkit-align-items: center;
+}
+
+.baseline {
+  align-items: baseline;
+  -webkit-align-items: baseline;
+}
+
+.pad-lr-30 {
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.pad-tb-18 {
+  padding-bottom: 18rpx;
+  padding-top: 18rpx;
+}
+
+.pad-tb-13 {
+  padding-top: 13rpx;
+  padding-bottom: 13rpx;
+}
+
+.pad-t-12 {
+  padding-top: 12rpx;
+}
+
+.font-48 {
+  font-size: 48rpx;
+}
+
+.font-42 {
+  font-size: 42rpx;
+}
+
+.font-36 {
+  font-size: 36rpx;
+}
+
+.font-34 {
+  font-size: 34rpx;
+}
+
+.font-32 {
+  font-size: 32rpx;
+}
+
+.font-30 {
+  font-size: 30rpx;
+}
+
+.font-28 {
+  font-size: 28rpx;
+}
+
+.font-26 {
+  font-size: 26rpx;
+}
+
+.font-24 {
+  font-size: 24rpx;
+}
+
+.font-22 {
+  font-size: 22rpx;
+}
+
+.font-20 {
+  font-size: 20rpx;
+}
+
+.bor-b {
+  border-bottom: 1px solid #d1d0d4;
+}
+
+.line-50 {
+  line-height: 50rpx;
+}
+
+.hei-50 {
+  height: 50rpx;
+}
+
+.hei-100 {
+  height: 100rpx;
+}
+
+.mar-30-15 {
+  margin: 15rpx 30rpx;
+}
+
+.hei-80 {
+  height: 80rpx;
+}
+
+.hei-80 input {
+  display: block;
+  height: 52rpx;
+}
+
+.search {
+  width: 31rpx;
+}
+
+.pad-30-15 {
+  padding: 15rpx 30rpx;
+  background: #fff;
+}
+
+.radius-26 {
+  border-radius: 26rpx;
+  background: #f7f7f7;
+}
+
+.wid100 {
+  width: 100%;
+}
+
+.left-fix {
+  margin-left: 15rpx;
+}
+
+.mar-b-20 {
+  margin-bottom: 20rpx;
+}
+
+.arrow {
+  width: 30rpx;
+  margin-left: 30rpx;
+}
+
+.hei-200 {
+  height: 200rpx;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.pad-tb-30 {
+  padding-bottom: 30rpx;
+  padding-top: 30rpx;
+}
+
+.pad-t-25 {
+  padding-top: 25rpx;
+}
+
+.pad-l-20 {
+  padding-left: 20rpx;
+}
+
+.mar-l-20 {
+  margin-left: 20rpx;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.block {
+  display: block;
+}
+
+.mar-t-35 {
+  margin-top: 35rpx;
+}
+
+.hei100 {
+  height: 100%;
+}
+
+.linethrough {
+  text-decoration: line-through;
+}
+
+.mar-lr-30 {
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+
+.font-60 {
+  font-size: 60rpx;
+}
+
+.mar-l-50 {
+  margin-left: 50rpx;
+}
+
+.mar-t-30 {
+  margin-top: 30rpx;
+}
+
+.gang {
+  border-left: 3px solid #ea5421;
+  margin-right: 2%;
+  margin-left: 30rpx;
+}
+
+.hei100 {
+  height: 100%;
+}
+
+.hei-500 {
+  height: 500rpx;
+}
+
+.wuwu {
+  width: 100%;
+  height: 50rpx;
+  float: left;
+  text-align: center;
+  margin-top: 50%;
+  color: #7d7d7d;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.bth-after:after {
+  border: 0;
+  border-radius: 0;
+}
+
+.picker-view {
+  height: 100%;
+  width: 75%;
+  font-size: 32rpx;
+  font-family:UICTFontTextStyleBody;
+}

@@ -1,0 +1,88 @@
+<view hidden='{{!XiaJia}}'>
+  <import src="../../wxParse/wxParse.wxml" />
+  <view style="width:100%;height:{{imgHeight}}px;float:left;">
+    <swiper class="swiper" indicator-dots="true" autoplay="true" interval="2000" duration="1000">
+      <block wx:for="{{movies}}" wx:for-index="index">
+        <swiper-item>
+          <text style="background-image:url({{item.url}}); height: 100%;width: 100%;background-repeat:round;float:left;" mode="aspectFill"></text>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="shijian" style="background-image: url('{{tu.a}}');display:none;">
+    <lable>
+    </lable>
+  </view>
+  <view class="content">
+    <view class="con_01">{{title}}</view>
+    <view class='con_04'>
+      <image mode='widthFix' class='money-img' src='{{youhui}}'></image>
+      ¥{{gprice}}
+      <label>原价:¥{{oprice}}</label>
+    </view>
+  </view>
+
+  <view class="tu">
+    <view class="shuoming" style="margin-top:2%;">课程简介</view>
+    <video hidden='{{shiping==""}}' src="{{shiping}}" controls style='width:100%;height:500rpx;margin-bottom:15px;'></video>
+    <view class='jianjie'>
+      <view class="wxParse">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      </view>
+    </view>
+  </view>
+
+  <view hidden="{{!areas.length}}" class="didian">
+    <view wx:if='{{agenInfo.Id > 0}}' class='agemar-t-20' bindtap='getAgencyDes' data-Id='{{agenInfo.Id}}'>
+      <view class='bg-white flex bor-b v-center agepadding'>
+        <image class='ageImg' src='{{picPath + agenInfo.Logo}}'></image>
+        <view class='agepad-tb-20' style='max-width:72%;'>
+          <view class='flex between baseline'>
+            <view class='green font-36'>{{agenInfo.AgencyName}}</view>
+          </view>
+          <view class='font-30 agepad-t-20'>地址：{{agenInfo.Address}}</view>
+          <view class='flex between baseline'>
+            <view class='font-30 agepad-t-20'>电话：{{agenInfo.Phone}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="bor-b flex hei-50 pad-tb-13" style="margin-top:2%;">
+      <view class='gang'></view>
+      课程开设校区</view>
+    <view class='pad-lr-30 pad-tb-30 bor-b bg-white' wx:for="{{areas}}" hidden='{{index >= length}}' bindtap='toCampus' data-campus-id="{{item.CpId}}" data-name="{{item.CpName}}" data-phone="{{item.CpContNum}}" data-address="{{item.CpAddress}}"  data-dis='{{item.Distance}}' wx:key="{{index}}">
+      <view class='flex between baseline'>
+        <view class='green font-36'>{{item.CpName}}</view>
+        <view class='font-30'>{{item.CpContNum}}</view>
+      </view>
+      <view class='flex between'>
+        <view class='font-30 pad-t-25' style='max-width:75%;'>{{item.CpAddress}}</view>
+        <view wx:if='{{item.Distance>=0}}' class='font-30 pad-t-25' style='color:#ababab;'>{{item.Distance}}KM</view>
+      </view>
+    </view>
+    <view bindtap='showAll' wx:if='{{areas.length > length}}' class='font-26 flex h-center v-center hei-100 bor-b'>
+      展开余下校区
+      <image class='arrow' mode='widthFix' src='/images/down.png'></image>
+    </view>
+  </view>
+  <view style='width:100%;height:130rpx;float:left;'></view>
+
+  <view class="guding">
+    <view class="gun1" bindtap="fanhui">
+      <text style="background-image: url('{{tu.e}}');"></text>
+    </view>
+    <view class="gun4" data-kid="{{kid}}" bindtap="{{yu}}">
+      <text class="gun_text">立即抢购</text>
+    </view>
+  </view>
+
+</view>
+
+<view hidden='{{XiaJia}}'>
+  <view>
+    <image class='img' mode='widthFix' src='{{xiajiatu}}'> </image>
+  </view>
+  <view class='baoqian'>抱歉，该课程已下架，
+    <text bindtap='ShouYua' class='shouYe'>去首页逛逛吧！</text>
+  </view>
+</view>

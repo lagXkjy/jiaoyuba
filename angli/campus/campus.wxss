@@ -1,0 +1,6 @@
+/* angli/campus/campus.wxss */
+@import "../../pages/index/index.wxss";
+.school{
+  width: 58rpx;
+  margin-right: 30rpx;
+}

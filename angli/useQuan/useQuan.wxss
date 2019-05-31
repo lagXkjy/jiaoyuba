@@ -1,0 +1,20 @@
+/* angli/useQuan/useQuan.wxss */
+.quanbox{
+  height: 220rpx;
+  position: relative; 
+}
+.bottom{
+  position: absolute;
+  line-height: 65rpx;
+  margin-left: 30rpx;
+  bottom:0;
+}
+.hei-165{
+  height: 165rpx;
+}
+.choosed{
+  width: 72rpx;
+  position: absolute;
+  top:0;
+  right: 0;
+}

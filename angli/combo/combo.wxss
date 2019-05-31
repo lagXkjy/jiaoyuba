@@ -1,0 +1,17 @@
+/* angli/combo/combo.wxss */
+@import "../../pages/index/index.wxss";
+@import "../../newpage/envelope/envelope.wxss";
+.pack{
+  width: 62rpx;
+}
+.arrow-right{
+  width:12rpx;
+  margin-left: 10rpx;
+  margin-bottom: 5rpx;
+}
+.jiesuan{
+  height: 50rpx;
+  padding: auto 12rpx;
+  line-height: 50rpx;
+  text-decoration: top;
+}

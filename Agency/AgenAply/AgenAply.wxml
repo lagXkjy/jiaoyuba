@@ -1,0 +1,22 @@
+<view class='fullwidth'>
+  <view>
+    <image class='fullwidth' mode='widthFix' src='{{ruzhubg}}'></image>
+  </view>
+  <view class='title'>| 机构申请资料</view>
+  <form bindsubmit='{{formsub}}' class='fullwidth'>
+    <view class='bg-color info dispflex'>
+      <view class='iptcom iptview'>机构名称：</view>
+      <input placeholder='请输入机构名称' name='AgencyName' value='{{AgencyName}}' class='iptcom ipt'></input>
+    </view>
+    <view class='bg-color info dispflex'>
+      <view class='iptcom iptview'>联系方式：</view>
+      <input placeholder='请输入联系方式' name='Phone' value='{{Phone}}' class='iptcom ipt'></input>
+    </view>
+    <view class='bg-color info dispflex'>
+      <view class='iptcom iptview'>联系人：</view>
+      <input placeholder='请输入联系人' name='Name' value='{{Name}}' class='iptcom ipt'></input>
+    </view>
+    <button form-type='submit' class='btnsub {{btnclass}}'>{{subword}}</button>
+  </form>
+  <view class='kefu'>客服热线：021-58303589</view>
+</view>

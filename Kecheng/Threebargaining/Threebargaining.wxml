@@ -1,0 +1,180 @@
+<view hidden='{{!XiaJia}}'>
+  <import src="../../wxParse/wxParse.wxml" />
+  <!--Kecheng/bargaining/bargaining.wxml-->
+  <view class='all-all'>
+    <view class='outer'>
+      <view class='top' style='background:url({{movies[0].url}}) no-repeat;background-size:100% 100%;border-bottom-left-radius:40%;border-bottom-right-radius:40%;'>
+        <view class='zhe'>
+          <view class='top-top1'>{{title}}</view>
+          <view class='top-middle'>{{jie}}</view>
+          <view class='top-footer'>{{groupcount}}人已参加</view>
+        </view>
+      </view>
+      <!--头部  -->
+      <view class='qingkan' hidden='{{guoqi==1}}'>
+        <view>你已为{{name}}砍了一刀</view>
+        <view>邀请更多好友帮{{name}}砍到低价吧！</view>
+      </view>
+      <view class='qingkan' hidden='{{guoqi==0}}'>
+        <view>你来晚了~{{name}}发起的砍价</view>
+        <view style='font-size:40rpx;color:black;'>已过期</view>
+      </view>
+      <view>
+        <view class='dingwei'>
+          <view style='width:600rpx;height:50rpx;margin:auto'>
+            <view class='sanjiao0' style='background:url({{imgd}}) no-repeat;background-size:100%;margin-left:{{topwidth}}rpx'>{{grouplist.length}}人已帮忙
+            </view>
+          </view>
+          <view class='middle-mi' style='background:url({{jindu}}) no-repeat;background-size:100%;width:525rpx;margin-bottom:2%;height:44rpx;'>
+            <view style='background:url({{jindu01}}) no-repeat;background-size:525rpx;width:{{width}}rpx;height:100%;float:left;'></view>
+            <view style='background:url({{yuandian}}) no-repeat;background-size:40rpx;width:40rpx;height:100%;float:left;margin-top:-3rpx;'></view>
+          </view>
+          <view class='buton'>
+            <view>
+              <view class='mingzia'>原价</view>
+              <view class='jiqiana'>¥{{oprice}}</view>
+            </view>
+            <view>
+              <view class='mingzia zhekou'>{{rpricecount}}人到折扣价</view>
+              <view class='jiqiana'>¥{{rprice}}</view>
+            </view>
+            <view>
+              <view class='mingzia dijia'>{{gpricecount}}人到底价</view>
+              <view class='jiqiana'>¥{{gprice}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+
+      <!--  -->
+      <view>
+        <view class='fenxiangaa' hidden='{{kancount==gpricecount}}'>
+          <view bindtap='CircleFriends' class='penyouquan'>分享朋友圈</view>
+          <button type="primary" open-type="share" class='haoyouka' style='font-size:30rpx;width:48.5%;line-height:104rpx;background-color:#ea5421;'>召唤好友砍价</button>
+        </view>
+        <view class='maikecheng' bindtap='mai' hidden='{{kancount==gpricecount}}'>
+          我也要买¥{{gprice}}课程
+        </view>
+        <view class='maikecheng' bindtap='mai' hidden='{{kancount!=gpricecount}}' style='background-color:#ea5421;color:white;'>
+          我也要买¥{{gprice}}课程
+        </view>
+      </view>
+
+    </view>
+
+    <view class='outer '>
+      <view class='kanjiuliu'>- 砍价流程 -</view>
+      <view>
+        <image class='lichengaa' src='{{liucheng}}' mode='widthFix'></image>
+        <view class='fenxiang'>
+          <view>分享</view>
+          <view>朋友砍价</view>
+          <view>砍价/看到折扣价/低价</view>
+          <view>砍价折/折扣价/低价购买
+          </view>
+        </view>
+      </view>
+      <view class='kanjiuliu'>- 课程详情 -</view>
+      <video hidden='{{shiping==""}}' src="{{shiping}}" controls style='width:100%;height:500rpx;margin-bottom:15px;'></video>
+      <view class='guizeaa'>
+        <view class="wxParse">
+          <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+        </view>
+      </view>
+      <view class='yuxia' style='display:none;'>
+        展开余下活动规则
+        <image src='{{xiala}}' mode='widthFix'></image>
+      </view>
+    </view>
+
+    <view class='outer outer1' hidden='{{grouplist.length<1}}'>
+      <view class='kanjiaxiangq'>—— 砍价详情 ——</view>
+      <view class=' sanwei'>已有{{grouplist.length}}位朋友帮你砍价</view>
+      <view class="heheh">
+        <view class='pingjiaaa' wx:for="{{grouplist}}">
+          <view>
+            <image class='touxianga' src='{{item.Users.AvatarUrl}}' mode='widthFix'></image>
+          </view>
+          <view style='float:left;font-size:32rpx;width:215rpx;margin-left:10rpx;'>{{item.Users.Name}}</view>
+          <view class='mi-peny' style='text-align:right;color:#8d8d8d;font-size:26rpx;'>
+            <view class='fon-36'>{{item.CreateOn}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view hidden="{{!areas.length}}" class="didian">
+      <view class="bor-b flex hei-50 pad-tb-13" style="margin-top:2%;">
+        <view class='gang'></view>
+        课程开设校区</view>
+      <view class='pad-lr-30 pad-tb-30 bor-b bg-white' wx:for="{{areas}}" hidden='{{index >= length}}' bindtap='toCampus' data-campus-id="{{item.CpId}}" data-name="{{item.CpName}}" data-phone="{{item.CpContNum}}" data-address="{{item.CpAddress}}" wx:key="{{index}}">
+        <view class='flex between baseline'>
+          <view class='green font-36' style='background:#fff;'>{{item.CpName}}</view>
+          <view class='font-30'>{{item.CpContNum}}</view>
+        </view>
+        <view class='font-30 pad-t-25'>{{item.CpAddress}}</view>
+      </view>
+      <view bindtap='showAll' wx:if='{{areas.length > length}}' class='font-26 flex h-center v-center hei-100 bor-b'>
+        展开余下校区
+        <image class='arrow' mode='widthFix' src='/images/down.png'></image>
+      </view>
+    </view>
+
+    <view class="caini" hidden='{{like.length<1}}'>
+      - 猜你喜欢 -
+    </view>
+
+    <!--猜你喜欢 -->
+    <view wx:for="{{like}}" wx:key='{{this}}' data-cid='{{item.Id}}' bindtap='likekan'>
+      <view class='center  flex bg-white' style='width:100%;margin-bottom:20rpx;'>
+        <view style='float:left;width:40%;margin:35rpx 0rpx;'>
+          <image class='image' style='height:145rpx;width:100%;' src="{{item.PicturePath}}"></image>
+        </view>
+        <view style='float:left;width:50%;margin-left:3%;'>
+          <view class="cen_right">
+            <view class="cen_r1">{{item.Title}}
+            </view>
+            <view class='flex between' style='align-items: center;'>
+              <view class="cen_this">¥{{item.OriginalPrice}}</view>
+              <view wx:if='{{item.Distance>=0}}' class='dissty'>{{item.Distance}}KM</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view style='float:left;width:100%;height:130rpx;'></view>
+    <view bindtap='mai' class='lastaa green' style='position: fixed;left: 0px;bottom: 0px;border-top:1px solid #e3e3e3;font-size:28rpx;'>
+      我也要买¥{{gprice}}课程
+    </view>
+
+  </view>
+
+
+  <view hidden='{{show}}' class='fenxiangaaa'>
+    <view class='fenxunaa' style='background:url({{haibao}}) no-repeat;background-size:100%;'>
+      <view class='changana' style='position:absolute;left:133rpx;bottom:57rpx;'>保存海报图片后可分享到朋友圈</view>
+      <view class='haibaoaa green white' bindtap='baocun'> 保存海报</view>
+      <view class='chacha' bindtap='CircleFriends'> x</view>
+    </view>
+  </view>
+
+</view>
+
+<view hidden='{{XiaJia}}'>
+  <view>
+    <image class='img' mode='widthFix' src='{{xiajiatu}}'> </image>
+  </view>
+  <view class='baoqian'>抱歉，该课程已下架，
+    <text bindtap='ShouYua' class='shouYe'>去首页逛逛吧！</text>
+  </view>
+</view>
+
+<view hidden='{{showMask}}' style='background:rgba(0,0,0,0.5);width:100%;height:100%;position:fixed;top:0;'>
+  <view class='' style='border-radius:10rpx;width:65%;margin:50% auto 0;overflow:hidden;'>
+    <!-- <view class='flex h-center font-36 hei-100 v-center'>提示</view>
+    <view class='flex h-center huiSea font-30' style='margin-bottom:35rpx;'>需要获得您的“公开信息”方能正常使用</view> -->
+    <button open-type='getUserInfo' bindgetuserinfo='getUserInfo' class='font-42 bg-white bth-after' style='border-radius:10rpx;box-shadow:10rpx 10rpx 10rpx #db4c39;color:#FFF;background:#db4c39'>点击去授权</button>
+  </view>
+</view>

@@ -1,0 +1,38 @@
+/* angli/campus/campus.wxss */
+@import "../../pages/index/index.wxss";
+
+.agepadding {
+  padding: 15rpx 30rpx;
+}
+
+.agemar-t-20 {
+  margin-bottom: 20rpx;
+}
+
+.age-pos-r {
+  position: absolute;
+  right: 30rpx;
+  color: #ababab;
+  font-weight: 300;
+}
+
+.agepad-t-20 {
+  padding-top: 20rpx;
+}
+
+.agepad-tb-20 {
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.ageImg {
+  height: 150rpx;
+  width: 150rpx;
+  margin-right: 30rpx;
+  border: 1rpx #dbdbdb solid;
+}
+
+.nse_imh{
+  position: absolute;
+  width:65rpx;
+}

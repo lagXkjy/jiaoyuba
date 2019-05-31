@@ -1,0 +1,74 @@
+<view style='width:100%;padding-bottom:150rpx;'>
+  <!--angli/choose/choose.wxml-->
+
+  <!-- 课程 -->
+  <view hidden='{{myCourList.length}}' class='clear-float flex bor-b v-center h-center hei-200 c-gray'>暂无课程</view>
+  <view class='bg-white clear-float' wx:for="{{myCourList}}" wx:key='{{index}}' style='width:100%;overflow:hidden;'>
+    <view class="top bor-b" style='float:left;' data-status="{{item.Status}}" data-orderstype="{{item.GroupOrdersType}}" data-types="{{item.Course.Type}}" data-Id="{{item.Id}}" data-card="{{item.GroupOrderCard}}" data-cid="{{item.Course.Id}}" data-title="{{item.Course.Title}}">
+      <view class='center flex clear-float'>
+        <image bindtap='itemChoose' data-index="{{index}}" src="{{item.choose ? '/images/choose-y.png' : '/images/choose-n.png'}}" mode='widthFix' class='choose-btn'></image>
+        <view style='float:left;width:40%;'>
+          <image class='image' style='height:144rpx;' src="{{CoursePath+item.CpMainPic}}"></image>
+        </view>
+        <view style='float:left;width:50%;margin-left:3%;'>
+          <view class="cen_right">
+            <view class="cen_r1">{{item.CpTitle}}
+            </view>
+            <view class="cen_r2">¥{{item.CpPrice}}
+              <!-- <label>¥{{item.Course.OriginalPrice}}</label> -->
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <view bindtap='showRule' class='flex huiSea v-center font-24 underline mar-t-35 pad-lr-30'>
+    <image src='/images/tishi.png' mode='widthFix' class='choose-btn' style=''></image>
+    <text>套餐班优惠规则</text>
+  </view>
+
+  <view
+  style='width:100%;overflow:hidden;padding-right:0;'
+   class='footer flex v-center pad-lr-30 hei-110 wid100 bg-white fix-bottom'>
+    <view class='flex v-center wid16 font-28'>
+      <image bindtap='allChoose' src="{{all ? '/images/choose-y.png':'/images/choose-n.png'}}" style='margin-right:15rpx;' class='choose-btn' mode='widthFix'></image>
+      <text>全选</text>
+    </view>
+    <view class='wid44 mar-l-20 '>
+      <view class='font-30'>折扣价:￥{{zheMoney}}</view>
+      <view class='font-24 linethrough huiSea'>原价￥：{{money}}</view>
+    </view>
+    <view bindtap='jiesuan' class='bg-green hei100 flex v-center h-center wid40 font-38 white'>去结算（{{count}}）</view>
+  </view>
+
+
+
+  <view hidden='{{!rule}}' class='model-two'>
+  <view class='two-mid'>
+    <view>
+      <!-- <image class='img-two' src='{{xian}}' mode='widthFix'></image> -->
+      优惠规则
+      <!-- <image class='img-two img-right' src='{{xian2}}' mode='widthFix'></image> -->
+    </view>
+    <!-- <view>1、用户可邀请好友共同拆红包，满人则拆红包成功，共同瓜分相应金额的红包，每人获得红包金额随机；其中随机一人将获得“手气最佳红包”。</view>
+    <view>2、每个红包发起后{{mm.WaitTime}}小时未组满即失败，无红包奖励。</view>
+
+    <view>3、活动期间，帮助同一用户只可拆一次，但发起红包次数不限。</view>
+    <view>4、发起拆红包的用户需在该红包满人拆成功后或逾期失败后，才可再发起拆下一个红包。</view> -->
+    <view 
+    wx:for="{{rules}}"
+    wx:key="{{index}}"
+    >{{"购买"+item.CrTitle+"折扣"+item.CrDisCount}}</view>
+    <view>
+    <text style='display:inline-block;width:25%;' wx:for="{{CprRuleByMonth}}">{{item.CrMonth}}月：{{item.CrDisCount}}%</text>
+    </view>
+    <view 
+    >{{CprUseIntro}}</view>
+  </view>
+  <view class='icon'>
+    <icon bindtap='hideRule'  type="cancel" color='rgba(255,255,255,0.8)' size="40"/>
+  </view>
+</view>
+</view>

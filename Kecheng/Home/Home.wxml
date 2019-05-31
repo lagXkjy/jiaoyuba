@@ -1,0 +1,300 @@
+<!--导航条 -->
+
+<scroll-view scroll-x='{{true}}'>
+  <view class='navbar' style='width:{{navWidth}}%' wx:if='{{navContent.length > 0}}'>
+    <button wx:for="{{navContent}}" open-type='getUserInfo' wx:key='{{index}}' data-index='{{index}}' data-id="{{item.Id}}" bindgetuserinfo='navbarTap' class='flex btn' style='width: 15%;position:relative;flex: auto;-webkit-flex: auto;text-align: center;font-size:32rpx;line-height: 86rpx;'>
+      <text class='item {{currentTab==index ? "active" : ""}}' style='width:100%;'>{{item.courTitle}}</text>
+    </button>
+  </view>
+</scroll-view>
+<swiper wx:if='{{currentTab==0}}' style='height:280rpx' indicator-dots='{{true}}' autoplay='{{true}}' indicator-active-color='#fff'>
+  <swiper-item wx:for='{{banInfos}}' wx:key='{{item.Id}}' data-path='{{item.Path}}' bindtap='banJump'>
+    <image mode='widthFix' class='wid100' src='{{banImgPath + item.Image}}'></image>
+  </swiper-item>
+</swiper>
+
+<!--推荐课程  -->
+<view name="recom" wx:if="{{currentTab===0}}">
+  <view hidden='{{template.length<=0}}' class='swiper-tem'>
+    <swiper indicator-dots='{{true}}' autoplay='{{false}}' indicator-active-color='#ea5421' style='height:100%;' class="swiper" circular='{{false}}' current='{{tabCurrent}}'>
+      <block wx:for='{{template}}' wx:key='{{item.key}}'>
+        <swiper-item>
+          <view class='DinWei flx' style='flex-flow:row wrap;'>
+            <button wx:for="{{item.value}}" wx:key='{{index}}' class='Hou-top' open-type='getUserInfo' wx:for-item='subItem' style='width:20%;border:none;background:#fff;outer-line:none;box-sizing:content-box' data-types='{{subItem.types}}' bindgetuserinfo='keke'>
+              <view class='flx center'>
+                <image src='{{subItem.url}}' class='Se-img' lazy-load='{{true}}'></image>
+              </view>
+              <view class='fon-24 huiSea align-center'>{{subItem.title}}</view>
+            </button>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='bg-white outer-Hj' wx:for="{{recomCourList}}" data-pid="{{item.Id}}" data-type="{{item.Type}}" data-gid="{{item.GroupBookingId}}" wx:key='{{index}}' data-scount="{{item.ShengCount}}" data-otype="{{item.GroupOrders.Type}}" data-oid="{{item.GroupOrders.Id}}"
+    data-title="{{item.Title}}" data-sheng="{{item.ParticipateCount-item.GropCount}}" hidden='{{item.Type==undefined}}' bindtap="Ping">
+    <view class='clear-float' style='width:100%; padding-top:30rpx;padding-left:30rpx;box-sizing:border-box'>
+      <view class='left' style='width:288rpx;height:144rpx;'>
+        <view style='background:url({{item.PicturePath}}) no-repeat;background-size:100% 100%;width:100%;height:100%;position:relative;'>
+          <image class='dingWEi-Hj' style='left:0;width:21%;' mode='widthFix' wx:if='{{item.Type==1}}' src="{{pingimg}}"></image>
+          <image class='dingWEi-Hj' style='left:0;width:21%;' mode='widthFix' wx:if='{{item.Type==4}}' src="{{kanimg}}"></image>
+          <image class='dingWEi-Hj' style='left:0;width:21%;' mode='widthFix' wx:if='{{item.Type==5}}' src="{{yiyuan}}"></image>
+          <image class='dingWEi-Hj' style='left:0;width:21%;' mode='widthFix' wx:if='{{item.Type==6}}' src="{{dati}}"></image>
+          <image class='dingWEi-Hj' style='left:0;width:21%;' mode='widthFix' wx:if='{{item.Type==11}}' src="{{shiting}}"></image>
+          <image class='dingWEi-Hj' style='left:0;width:21%;' mode='widthFix' wx:if='{{item.Type==12}}' src="{{taocan}}"></image>
+          <image class='dingWEi-Hj' style='left:0;width:21%;' mode='widthFix' wx:if='{{item.Type==10}}' src="{{youimg}}"></image>
+        </view>
+      </view>
+      <view class='bg-white top-btm right' style='width:60%'>
+        <view class='title-Hj xianzhi' style='padding-top:0;height:88rpx'>{{item.Title}}
+        </view>
+        <view class='flex botom-Hj' style='padding-right:0'>
+          <view class='RedBao wid100 between' style='align-items:flex-end;'>
+            <text class='Price-Hj' style='height:100%;'>¥{{item.GroupPrice}} </text>
+            <text wx:if='{{item.Distance>=0}}' class='YuanJ-Hj' style='margin-top:13rpx;margin-right:30rpx;'>{{item.Distance}}KM</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!--栏目-->
+<view wx:if="{{currentTab!=0}}">
+  <view wx:for="{{tabCourList}}" class='PingTuan bg-white outer-Hj' data-pid="{{item.Id}}" data-type="{{item.Type}}" data-gid="{{item.GroupBookingId}}" data-scount="{{item.ShengCount}}" data-otype="{{item.GroupOrders.Type}}" data-oid="{{item.GroupOrders.Id}}"
+    wx:key='index' data-title="{{item.Title}}" data-sheng="{{item.ParticipateCount-item.GropCount}}" bindtap="Ping">
+    <!-- 拼团课程 -->
+    <view wx:if='{{item.Type==1 || item.Type==12}}' class='clear-float' style='padding-top:30rpx;padding-left:30rpx;padding-bottom:20rpx;'>
+      <view class='left' style='width:40%;'>
+        <view class='top-top' style='background:url({{item.PicturePath}}) no-repeat;background-size:100% 100%;'>
+        </view>
+      </view>
+      <view class='right' style='width:60%;'>
+        <view class='title-Hj xianzhi' style='padding-top:0rpx;height:88rpx;'>
+          {{item.Title}}
+        </view>
+        <view class='flex botom-Hj' style='padding-right:0'>
+          <view class='RedBao wid100 between'>
+            <text class='Price-Hj' style='height:100%;'>¥{{item.GroupPrice}} </text>
+            <text wx:if='{{item.Distance>=0}}' class=' YuanJ-Hj ' style='margin-top:13rpx;margin-right:30rpx;'>{{item.Distance}}KM</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 砍价课程 -->
+    <view wx:if='{{item.Type==4}}' class='clear-float' style='width:100%; padding-top:30rpx;padding-left:30rpx;padding-bottom:20rpx;box-sizing:border-box'>
+      <view class='left' style='width:40%'>
+        <view class='top-top' style='background:url({{item.PicturePath}}) no-repeat;background-size:100% 100%;'>
+          <view class='zhe' idden='{{item.ShengCount >= 1 && item.IsKanGroupEndTime==0}}'>
+            <view hidden='{{item.IsKanGroupEndTime==0}}' style='margin-top:10%;'>
+              <view class='kanjiaa'>砍价进行中</view>
+              <view class='kanjiaa flex h-center'>
+                <text class='baiseku'>{{item.shi}}</text> 小时
+                <text class='baiseku'>{{item.fen}}</text> 分
+                <text class='baiseku'>{{item.miao}}</text> 秒
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='right' style='width:60%'>
+        <view class='title-Hj xianzhi' style='padding-top:0;height:88rpx'>
+          {{item.Title}}
+        </view>
+      </view>
+
+      <view class='bg-white top-btm'>
+        <view class='flex botom-Hj'>
+          <view class='flex between'>
+            <view class='mid-btn' wx:if='{{item.ShengCount<=0}}' style="height:50rpx;line-height:50rpx;">
+              已售罄
+            </view>
+            <view class='Price-Hj' style='float:left;'>
+              ¥{{item.GroupPrice}}
+            </view>
+            <view wx:if='{{item.Distance>=0}}' class=' YuanJ-Hj ' style='margin-top:13rpx;'>
+              {{item.Distance}}KM
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 一元购课程 -->
+    <view wx:if='{{item.Type==5}}'>
+      <view class='clear-float' style='width:100%; padding-top:30rpx;padding-left:30rpx;box-sizing:border-box'>
+        <view class='left' style='width:40%;'>
+          <view class='top-top' style='background:url({{item.PicturePath}}) no-repeat;background-size:100% 100%;'>
+          </view>
+        </view>
+        <view class='right' style='width:60%'>
+          <view class='title-Hj xianzhi' style='padding-top:0;height:88rpx;'>{{item.Title}}</view>
+          <view class='flex botom-Hj'>
+            <view class='flex'>
+              <view class='AnNiu-Hj' style='font-size:34rpx;float:left;background-color:#ababab;' hidden='{{item.GropCount!=item.ParticipateCount}}'>
+                <text>已售罄</text>
+              </view>
+              <view hidden='{{item.GropCount==item.ParticipateCount}}'>
+                <view hidden='{{item.GroupOrders==null}}' class='AnNiu-Hj' style='font-size:34rpx;float:left;background-color:#ababab;'>
+                  <text>已抢购</text>
+                </view>
+                <view hidden='{{item.GroupOrders!=null}}' class='AnNiu-Hj' style='font-size:34rpx;float:left;'>
+                  <text style='font-size:32rpx'>一元抢购</text>
+                </view>
+              </view>
+              <view hidden='{{item.IsKanGroupEndTime==0}}' class='AnNiu-Hj' style='font-size:34rpx;float:left;'>
+                <text style='font-size:30rpx'>查看详情</text>
+              </view>
+              <view class='flex' style='line-height:53rpx;'>
+                <text class='YuanJ-Hj '>原价:  </text>
+                <text class=' YuanJ-Hj throught-Hj'>{{item.OriginalPrice}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class='bg-white top-btm' style='margin-top:20rpx;'>
+        <view class='pro-pro'>
+          <view class='progress'>
+            <progress color="#ffb75d" percent="{{item.jindu}}"></progress>
+          </view>
+          <view class='flex pro-btn' style='margin-top:15rpx;font-size:26rpx;'>
+            <view class='flex'>
+              已抢购{{item.GropCount}}件 |
+              <view class='pro-green' style='margin-left:15rpx;'>
+                剩余{{item.ParticipateCount-item.GropCount}}件
+              </view>
+            </view>
+            <view wx:if='{{item.Distance>=0}}' class='flex YuanJ-Hj '>{{item.Distance}}KM</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 答题赢课 -->
+    <view wx:if='{{item.Type==6}}' class='clear-float' style='padding-top:15px;'>
+      <view class='clear-float' style='padding-left:30rpx;'>
+        <view class='left' style='width:40%;'>
+          <view class='top-top' style='background:url({{item.PicturePath}}) no-repeat;background-size:100% 100%;'>
+          </view>
+        </view>
+        <view class='right' style='width:60%'>
+          <view class='title-Hj xianzhi' style='padding-top:0;height:88rpx;'>
+            {{item.Title}}
+          </view>
+          <view class='flex botom-Hj'>
+            <view class='flex'>
+              <view hidden='{{item.ParticipateCount==item.GropCount}}'>
+                <view hidden='{{item.GroupOrders!=null}}' class='AnNiu-Hj' style='font-size:34rpx;float:left;'>
+                  <text style='font-size:32rpx'>立即答题</text>
+                </view>
+
+                <view hidden='{{item.GroupOrders.Type!=2}}' class='AnNiu-Hj' style='font-size:34rpx;float:left;'>
+                  <text style='font-size:32rpx'>立即领取</text>
+                </view>
+
+                <view hidden='{{item.GroupOrders.Type!=1}}' class='AnNiu-Hj' style='font-size:34rpx;float:left;background-color:#ababab;'>
+                  <text style='font-size:32rpx'>已领取</text>
+                </view>
+
+                <view hidden='{{item.GroupOrders.Type!=3}}' class='AnNiu-Hj' style='font-size:34rpx;float:left;background-color:#ababab;'>
+                  <text style='font-size:32rpx'>答题失败</text>
+                </view>
+              </view>
+              <view hidden='{{item.ParticipateCount!=item.GropCount}}' class='AnNiu-Hj' style='font-size:34rpx;float:left;background-color:#ababab;'>
+                <text style='font-size:32rpx'>已领完</text>
+              </view>
+              <view hidden='{{item.IsKanGroupEndTime==0}}' class='AnNiu-Hj' style='font-size:34rpx;float:left;'>
+                <text style='font-size:30rpx'>查看详情</text>
+              </view>
+              <view style='line-height:53rpx;'>
+                <text class='YuanJ-Hj '>原价:  </text>
+                <text class=' YuanJ-Hj throught-Hj'>{{item.OriginalPrice}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='bg-white top-btm' style='margin-top:20rpx'>
+        <view class='pro-pro'>
+          <view class='progress'>
+            <progress class='progress' color="#ffb75d" percent="{{item.jindu}}"></progress>
+          </view>
+          <view class='flex pro-btn' style='margin-top:15rpx;font-size:26rpx;'>
+            <view class='flex'>
+              已赢取{{item.GropCount}}件 |
+              <view class='pro-green' style='margin-left:15rpx;'>
+                剩余{{item.ParticipateCount-item.GropCount}}件
+              </view>
+            </view>
+            <view wx:if='{{item.Distance>=0}}' class='flex YuanJ-Hj '>{{item.Distance}}KM</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 优惠课程 -->
+    <view wx:if='{{item.Type==10}}' class='clear-float' style='width:100%; padding-top:30rpx;padding-left:30rpx;padding-bottom:20rpx;box-sizing:border-box'>
+      <view class='left' style='width:40%'>
+        <view class='top-top' style='background:url({{item.PicturePath}}) no-repeat;background-size:100% 100%;height:160rpx'>
+        </view>
+      </view>
+      <view class='bg-white top-btm right' style='width:60%'>
+        <view class='title-Hj xianzhi' style='padding-top:0;height:88rpx'>{{item.Title}}
+        </view>
+        <view class='flex botom-Hj homebetween'>
+          <view class='RedBao'>
+            <image mode='widthFix' class='money-img' src='{{youhui}}'></image>
+            <view class='Price-Hj' style='float:left;height:100%;'>
+              ¥{{item.GroupPrice}}
+            </view>
+          </view>
+          <view wx:if='{{item.Distance>=0}}' class=' YuanJ-Hj'>
+            {{item.Distance}}KM
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 试听课程 -->
+    <view wx:if='{{item.Type==11}}'>
+      <view class='clear-float' style='width:100%; padding-top:30rpx;padding-left:30rpx;box-sizing:border-box'>
+        <view class='left' style='width:40%'>
+          <view class='top-top' style='background:url({{item.PicturePath}}) no-repeat;background-size:100% 100%;'>
+          </view>
+        </view>
+        <view class='right' style='width:60%;'>
+          <view class='title-Hj xianzhi' style='padding-top:0;height:88rpx'>
+            {{item.Title}}
+          </view>
+          <view class='flex botom-Hj'>
+            <view class='flex center'>
+              <view class='Price-Hj'>
+                ¥{{item.GroupPrice}}
+              </view>
+              <view class='YuanJ-Hj' style='margin:10rpx 0 0 25rpx;'> 原价:</view>
+              <view class='YuanJ-Hj throught-Hj' style='margin-top:10rpx;'>{{item.OriginalPrice}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='bg-white top-btm' style='margin-top:20rpx;'>
+        <view class='pro-pro'>
+          <view class='progress'>
+            <progress color="#ffb75d" percent="{{item.jindu}}"></progress>
+          </view>
+          <view class='flex pro-btn' style='margin-top:15rpx;font-size:26rpx;'>
+            <view class='flex'>
+              已领取{{item.GropCount}}件 |
+              <view class='pro-green' style='margin-left:15rpx;'>
+                剩余{{item.ParticipateCount-item.GropCount}}件
+              </view>
+            </view>
+            <view wx:if='{{item.Distance>=0}}' class='flex YuanJ-Hj '>{{item.Distance}}KM</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{noCour}}">
+  <view class="wu">{{noCourMsg}}</view>
+</view>

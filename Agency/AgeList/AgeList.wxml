@@ -1,0 +1,23 @@
+<view class='hei-80 pad-lr-30 flex v-center mar-b-20 bg-white'>
+  <view class='flex v-center radius-26 wid100'>
+    <image class='search left-fix' mode="widthFix" src='/images/search.png'></image>
+    <input class='wid100 left-fix font-26' confirm-type='search' bindconfirm='searchAgency' placeholder='机构名称'></input>
+  </view>
+</view>
+
+<view wx:if="{{!haveAge}}" class='wuwu'>暂无机构信息</view>
+<view wx:if="{{haveAge}}" wx:for="{{ageInfos}}" wx:key="{{this}}" class='agemar-t-20' bindtap='getAgencyDes' data-Id='{{item.Id}}'>
+  <view class='bg-white flex bor-b v-center agepadding'>
+    <image class='ageImg' src='{{picPath + item.Logo}}'></image>
+    <view class='agepad-tb-20' style='max-width:72%;'>
+      <view class='flex between baseline'>
+        <view class='green font-36'>{{item.AgencyName}}</view>
+      </view>
+      <view class='font-30 agepad-t-20' style='max-width:500rpx;'>地址：{{item.Address}}</view>
+      <view class='flex between baseline'>
+        <view class='font-30 agepad-t-20'>电话：{{item.Phone}}</view>
+        <view wx:if='{{item.Distance>=0}}' class='font-30 agepad-t-20 age-pos-r'>{{item.Distance}}KM</view>
+      </view>
+    </view>
+  </view>
+</view>

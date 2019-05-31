@@ -1,0 +1,121 @@
+/* Kecheng/Home/Home.wxss */
+@import '../keke/keke.wxss';
+
+page {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  height: 100%;
+}
+
+.navbar {
+  height: 88rpx;
+  flex: none;
+  -webkit-flex: none;
+  display: flex;
+  display: -webkit-flex;
+  background: #fff;
+  font-size: 32rpx;
+  border-bottom: 1px solid #e8e6eb;
+}
+
+.navbar .item {
+  width: 15%;
+  position: relative;
+  flex: auto;
+  -webkit-flex: auto;
+  text-align: center;
+  line-height: 86rpx;
+}
+
+.navbar .item.active {
+  color: #ea5421;
+}
+
+.navbar .item.active:after {
+  display: block;
+  height: 4rpx;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: "";
+  background: #ea5421;
+}
+
+.swiper-tem {
+  background-color: #fff;
+  height: 310rpx;
+  margin: 0 0 20rpx;
+  padding: 20rpx 0 0;
+}
+
+.DinWei {
+  /* padding: 30rpx 11rpx; */
+  justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+}
+
+.Se-img {
+  height: 77rpx;
+  width: 77rpx;
+  /* border-radius: 50%; */
+  margin-bottom: 5rpx;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.wu {
+  width: 100%;
+  height: 50rpx;
+  float: left;
+  text-align: center;
+  margin:50% 0;
+  color: #7d7d7d;
+}
+
+.Hou-top {
+  box-sizing: content-box;
+  padding: 0;
+  margin: 0;
+}
+
+.Hou-top::after {
+  border: 0;
+}
+
+.btn {
+  border: 0;
+  background: #fff;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  box-sizing: content-box;
+  color: black;
+}
+
+.btn::after {
+  border: 0;
+}
+
+.PingTuan {
+  width: 100%;
+}
+
+.top-top {
+  height: 160rpx !important;
+}
+
+.top-btm {
+  padding-bottom: 10rpx !important;
+}
+
+.homebetween{
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  align-items: center;
+}

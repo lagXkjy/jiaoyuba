@@ -1,0 +1,17 @@
+<view class='hei-80 pad-lr-30 flex v-center mar-b-20 bg-white'>
+  <view class='flex v-center radius-26 wid100'>
+    <image class='search left-fix' mode="widthFix" src='/images/search.png'></image>
+    <input class='wid100 left-fix font-26' confirm-type='search' bindconfirm='searchCourses' placeholder='请输入关键字'></input>
+  </view>
+</view>
+<view wx:if='{{campus.length <= 0}}' class='wuwu'>暂无校区</view>
+<view wx:if='{{campus.length >= 1}}' bindtap='toCampus' wx:for="{{campus}}" wx:key='{{this}}' data-campus-id="{{item.CpId}}" data-cname="{{item.CpName}}" data-cphone="{{item.CpContNum}}" data-dis='{{item.Distance}}' data-caddress="{{item.CpAddress}}" class='pad-lr-30 pad-tb-30 bor-b bg-white'>
+  <view class='flex between baseline'>
+    <view class='green font-36'>{{item.CpName}}</view>
+    <view class='font-30'>{{item.CpContNum}}</view>
+  </view>
+  <view class='flex between baseline'>
+    <view class='font-30 pad-t-25'>地址：{{item.CpAddress}}</view>
+    <view class='font-30 pad-t-25' style='color:#ababab;'>{{item.Distance}}KM</view>
+  </view>
+</view>

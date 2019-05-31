@@ -1,0 +1,4 @@
+/* angli/searchcampus/searchcampus.wxss */
+page{
+  margin-top: 0;
+}

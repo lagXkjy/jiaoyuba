@@ -1,0 +1,38 @@
+<!--pages/shouru/shouru.wxml-->
+<view class="noke" hidden="{{list.length>0}}">收入明细为空</view>
+<view 
+class='fle v-center between hei-100 pad-lr-30 bg-white mar-b-20'
+hidden='{{!list.length}}'
+>
+  <view class='fle v-center'>
+    <image src='{{rmb}}' class='pack' mode='widthFix'></image>
+    <view class='font-30 mar-l-20'>佣金</view>
+    <view class='green font-42 mar-l-20'>{{yongjin}}</view>
+  </view>
+  <view class='fle v-center font-24'>
+    <button 
+    bindtap='tixian'
+    class='jiesuan mar-l-20 font-24 bg-green  white fle v-center'>
+      去提现
+      <image src='/images/right-white.png' class='arrow-right' mode='widthFix'></image>
+    </button>
+  </view>
+</view>
+
+<view wx:for="{{list}}"  class='flex'>
+  <view>
+    <view class='top'>{{item.Remark}}</view>
+    <view class='bto'>{{item.CreateOn}}</view>
+  </view>
+
+  <view wx:if="{{item.Type==1}}" class='green  size'>
+    +{{item.Price}}
+  </view>
+
+  <view wx:else class='size'>
+    -{{item.Price}}
+  </view>
+</view>
+<loading hidden="{{hidden}}">
+  加载中...
+</loading>

@@ -1,0 +1,117 @@
+<view hidden='{{!XiaJia}}'>
+  <import src="../../wxParse/wxParse.wxml" />
+  <view style="width:100%;height:{{imgHeight}}px;float:left;">
+    <swiper class="swiper" indicator-dots="true" autoplay="true" interval="2000" duration="1000">
+      <block wx:for="{{movies}}" wx:for-index="index">
+        <swiper-item>
+          <text style="background-image:url({{item.url}}); height: 100%;width: 100%;background-repeat:round;float:left;" mode="aspectFill"></text>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="shijian" style="background-image: url('{{tu.a}}');display:none;">
+    <lable>
+      <!-- {{clock}} {{micro_second}} -->
+    </lable>
+  </view>
+  <view class="content">
+    <view class="con_01">{{title}}</view>
+    <view class="con_02">{{jie}}</view>
+    <view class="con_03">已有{{groupcount}}人参与</view>
+    <view class="con_04">¥{{gprice}}
+      <label>原价:¥{{oprice}}</label>
+      <view>{{ccount}}人团</view>
+    </view>
+  </view>
+  <view class="canlist">
+    <view bindtap="detial" class="can_01">支付开团邀请{{ccountmin}}人参团,人数不足自动退款
+      <label>详细规则</label>
+      <text style="background-image: url('{{tu.b}}');"></text>
+    </view>
+    <view class="can_02" hidden="{{group.length<1}}">以下小伙伴正在发起拼团,您可以直接参与:</view>
+    <view class="can_03" wx:for="{{group}}">
+      <view class="can03_img" style="background-image:url({{item.im}});">
+      </view>
+      <view class="can03_name">{{item.name}}</view>
+      <view class="can03_right">
+        <text style="color:#ea5421;margin-top:2%;">还剩{{item.co}}人成团</text>
+        <text style="color:#ababab;margin-top:-7rpx">截止时间:</text>
+        <text style="color:#ababab;width:100%;margin-top:-8rpx;text-align:center;">{{item.et}}</text>
+      </view>
+      <view hidden='{{item.zhu}}' class="can03_end" data-id="{{item.id}}" data-co="{{item.co}}" bindtap="cantuan"> 去参团</view>
+    </view>
+  </view>
+  <view class="tu">
+    <view class="shuoming" style="margin-top:2%;">课程简介</view>
+    <video hidden='{{shiping==""}}' src="{{shiping}}" controls style='width:100%;height:500rpx;margin-bottom:15px;'></video>
+    <view class='jianjie'>
+      <view class="wxParse">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      </view>
+    </view>
+
+  </view>
+
+
+
+  <view hidden="{{!areas.length}}" class="didian">
+    <view wx:if='{{agenInfo.Id > 0}}' class='agemar-t-20' bindtap='getAgencyDes' data-Id='{{agenInfo.Id}}'>
+      <view class='bg-white flex bor-b v-center agepadding'>
+        <image class='ageImg' src='{{picPath + agenInfo.Logo}}'></image>
+        <view class='agepad-tb-20' style='max-width:72%;'>
+          <view class='flex between baseline'>
+            <view class='green font-36'>{{agenInfo.AgencyName}}</view>
+          </view>
+          <view class='font-30 agepad-t-20'>地址：{{agenInfo.Address}}</view>
+          <view class='flex between baseline'>
+            <view class='font-30 agepad-t-20'>电话：{{agenInfo.Phone}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="bor-b flex hei-50 pad-tb-13" style="margin-top:2%;">
+      <view class='gang'></view>
+      课程开设校区</view>
+    <view class='pad-lr-30 pad-tb-30 bor-b bg-white' wx:for="{{areas}}" hidden='{{index >= length}}' bindtap='toCampus' data-campus-id="{{item.CpId}}" data-name="{{item.CpName}}" data-phone="{{item.CpContNum}}" data-address="{{item.CpAddress}}" wx:key="{{index}}"
+      data-dis='{{item.Distance}}'>
+      <view class='flex between baseline'>
+        <view class='green font-36'>{{item.CpName}}</view>
+        <view class='font-30'>{{item.CpContNum}}</view>
+      </view>
+      <view class='flex between'>
+        <view class='font-30 pad-t-25'>{{item.CpAddress}}</view>
+        <view wx:if='{{item.Distance>=0}}' class='font-30 pad-t-25' style='color:#ababab;'>
+          {{item.Distance}}KM
+        </view>
+      </view>
+    </view>
+    <view bindtap='showAll' wx:if='{{areas.length > length}}' class='font-26 flex h-center v-center hei-100 bor-b'>
+      展开余下校区
+      <image class='arrow' mode='widthFix' src='/images/down.png'></image>
+    </view>
+  </view>
+  <view style='width:100%;height:130rpx;float:left;'></view>
+
+  <view class="guding">
+    <view class="gun1" bindtap="fanhui">
+      <text style="background-image: url('{{tu.e}}');"></text>
+    </view>
+    <view class="gun4" data-kid="{{kid}}" data-types="1" bindtap="{{yu}}">
+      <text class="gun_text" style="margin-top:5%;">¥{{gprice}}</text>
+      <text class="gun_text">{{ccount}}人拼团</text>
+    </view>
+    <view class="gun3" data-kid="{{kid}}" data-types="0" bindtap="{{yu}}">
+      <text class="gun_text" style="margin-top:6%;">¥{{rprice}}</text>
+      <text class="gun_text">单独购买</text>
+    </view>
+  </view>
+</view>
+
+<view hidden='{{XiaJia}}'>
+  <view>
+    <image class='img' mode='widthFix' src='{{xiajiatu}}'> </image>
+  </view>
+  <view class='baoqian'>抱歉，该课程已下架，
+    <text bindtap='ShouYua' class='shouYe'>去首页逛逛吧！</text>
+  </view>
+</view>

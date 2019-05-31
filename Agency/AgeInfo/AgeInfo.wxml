@@ -1,0 +1,52 @@
+<!--angli/campus/campus.wxml-->
+<view class='hei-80 pad-lr-30 flex v-center mar-b-20 bg-white'>
+  <view class='flex v-center radius-26 wid100'>
+    <image class='search left-fix' mode="widthFix" src='/images/search.png'></image>
+    <input class='wid100 left-fix font-26' confirm-type='search' bindconfirm='searchCorInfo' placeholder='课程名称'></input>
+  </view>
+</view>
+
+<view wx:if='{{agenInfo.StatusS==1}}' class='bg-white flex bor-b v-center agepadding'>
+  <image class='ageImg' src='{{agePicPath + agenInfo.Logo}}'></image>
+  <view class='agepad-tb-20' style='max-width:72%;'>
+    <view class='flex between baseline'>
+      <view class='green font-36'>{{agenInfo.AgencyName}}</view>
+    </view>
+    <view class='font-30 agepad-t-20'>地址：{{agenInfo.Address}}</view>
+    <view class='font-30 agepad-t-20'>电话：{{agenInfo.Phone}}</view>
+  </view>
+</view>
+
+<!-- 课程 -->
+<view wx:if='{{!haveCor}}' class='wuwu'>该机构暂未发布课程</view>
+<view wx:if='{{haveCor}}' class='bg-white in-top' wx:for="{{corInfos}}" wx:key='{{this}}' style='border-bottom:1px solid #e0e0e0;'>
+  <view class="top" style='float:left;margin-bottom:20rpx;' bindtap="getCorDesInfo" data-pid="{{item.Id}}" data-type="{{item.Type}}" data-gid="{{item.GroupBookingId}}" data-scount="{{item.ShengCount}}" data-otype="{{item.GroupOrders.Type}}" data-oid="{{item.GroupOrders.Id}}"
+    data-title="{{item.Title}}">
+    <view class='center  flex'>
+      <view style='float:left;width:288rpx;height:144rpx;'>
+        <image mode='widthFix' class='nse_imh' src="{{pingimg}}" wx:if='{{item.Type=="1"}}'></image>
+        <image mode='widthFix' class='nse_imh' src="{{kanimg}}" wx:if='{{item.Type=="4"}}'></image>
+        <image mode='widthFix' class='nse_imh' src="{{yiimg}}" wx:if='{{item.Type=="5"}}'></image>
+        <image mode='widthFix' class='nse_imh' src="{{dati}}" wx:if='{{item.Type=="6"}}'></image>
+        <image mode='widthFix' class='nse_imh' src="{{hongbao}}" wx:if='{{item.Type=="7"}}'></image>
+        <image mode='widthFix' class='nse_imh' src="{{youhui}}" wx:if='{{item.Type=="10"}}'></image>
+        <image mode='widthFix' class='nse_imh' src="{{shiting}}" wx:if='{{item.Type=="11"}}'></image>
+        <image mode='widthFix' class='nse_imh' src="{{taocan}}" wx:if='{{item.Type=="12"}}'></image>
+        <image class='image' style='width:100%;height:100%;' src="{{CoursePath+item.PicturePath}}"></image>
+      </view>
+      <view style='float:left;width:50%;margin-left:3%;'>
+        <view class="cen_right">
+          <view class="cen_r1">{{item.Title}}
+          </view>
+          <view class='flex cen_r2'>
+            <view wx:if='{{item.Type=="9"}}'>¥{{item.GroupPrice}}
+            </view>
+            <view wx:if='{{item.Type!="9"}}'>¥{{item.RetailPrice}}
+            </view>
+            <view wx:if='{{item.Distance>=0}}' class='font-30 agepad-t-20 age-pos-r'>{{item.Distance}}KM</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,28 @@
+<!--newpage/MyBao/MyBao.wxml-->
+
+<!-- 未使用用优惠券 -->
+<view wx:for="{{list}}" wx:key="{{index}}" data-index="{{index}}" wx:if='{{item.status==0}}' style='background:url({{y_quan}}) no-repeat;background-size: 100% 100%;' class='quanbox mar-lr-30 white mar-t-30 clear-float'>
+  <view class='flex hei-165 v-center'>
+    <view class='font-36 mar-l-50'>
+      <text class='font-60 bold'>{{item.price}}</text>元</view>
+    <view class='mar-l-50'>
+      <view class='font-30'>{{item.title}}</view>
+      <view class='font-20 pad-t-12'>{{item.st}} - {{item.et}}</view>
+    </view>
+    <view bindtap='useQuan' data-quan_id="{{item.csid}}" data-quan_money="{{item.price}}" class='use-btn'>{{useintro}}</view>
+  </view>
+  <!-- <view class='font-24 bottom'>{{item.CnIntro}}</view> -->
+</view>
+<!-- 已使用优惠券 -->
+<view wx:for="{{list}}" wx:key="{{index}}" data-index="{{index}}" wx:if='{{item.status > 0}}' style='background:url({{n_quan}}) no-repeat;background-size: 100% 100%;' class='quanbox mar-lr-30 white mar-t-30 clear-float'>
+  <view class='flex hei-165 v-center'>
+    <view class='font-36 mar-l-50'>
+      <text class='font-60 bold'>{{item.price}}</text>元</view>
+    <view class='mar-l-50'>
+      <view class='font-30'>{{item.title}}</view>
+      <view class='font-20 pad-t-12'>{{item.st}} - {{item.et}}</view>
+    </view>
+    <view class='used-btn'>{{useintro}}</view>
+  </view>
+  <!-- <view class='font-24 bottom'>{{item.CnIntro}}</view> -->
+</view>

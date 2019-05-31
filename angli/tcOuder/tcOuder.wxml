@@ -1,0 +1,89 @@
+<!--angli/tcOuder/tcOuder.wxml-->
+<!--Ouder.wxml-->
+<view class="outer" bindtap='kecheng' wx:for="{{myCourList}}">
+  <view class="outer-left">
+    <image class="image" src="{{CoursePath+item.CpMainPic}}"></image>
+  </view>
+  <view class="outer-right">
+    <view class="content" style='line-height:36rpx;'>
+      {{item.CpTitle}}
+      <view class="num"></view>
+    </view>
+
+    <view class="price green font-36 bold">
+      ¥{{item.CpPrice}}
+    </view>
+    <!-- <view class="befor">
+      原价: ¥
+      <text>{{op}}</text>
+    </view> -->
+  </view>
+</view>
+
+<!-- <view class='bg-white in-top' wx:for="{{myCourList}}" wx:key='{{this}}' style='border-bottom:1px solid #e0e0e0;'>
+  <view class="top" style='float:left;margin-bottom:20rpx;' data-status="{{item.Status}}" data-orderstype="{{item.GroupOrdersType}}" data-types="{{item.Course.Type}}" data-Id="{{item.Id}}" data-card="{{item.GroupOrderCard}}" data-cid="{{item.Course.Id}}" data-title="{{item.Course.Title}}"
+    bindtap="xiangxi">
+    <view class='center  flex'>
+      <view style='float:left;width:40%;'>
+        <image class='image' style='height:144rpx;' src="{{item.Course.PicturePath}}"></image>
+      </view>
+      <view style='float:left;width:50%;margin-left:3%;'>
+        <view class="cen_right">
+          <view class="cen_r1">{{item.Course.Title}}
+          </view>
+          <view class="cen_r2">¥{{item.Price}} -->
+<!-- <label>¥{{item.Course.OriginalPrice}}</label>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> -->
+
+
+<form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+  <view class="middle">
+    <view class="classname">
+      <view class="middle-top">
+        <view class="zhanwei">姓名：</view>
+        <input bindinput='nameInp' name="Name" placeholder="请输入姓名" value="{{name}}" />
+      </view>
+      <view class="middle-top">
+        <view class="zhanwei">手机号：</view>
+        <input bindinput='phoneInp' type="number" name="Phone" placeholder="请输入手机号" value="{{pphone}}" />
+      </view>
+      <view class="middle-top">
+        <view class="zhanwei">年龄：</view>
+        <input bindinput='ageInp' type="number" name="Age" placeholder="请输入年龄(选填)" value='{{age}}' />
+      </view>
+      <view class="middle-top">
+        <view class="zhanwei">备注：</view>
+        <input bindinput='remarkInp' name="Remark" placeholder="说些什么(选填)" value='{{remark}}' />
+      </view>
+
+      <view class="middle-top">
+        <view class="zhanwei">校区：</view>
+        <picker class='picker-view' bindchange="bindPickerChange" value="{{index}}" range="{{cpInfos}}" range-key='{{"CpName"}}'>
+          <view class="picker">
+            {{cpInfos[pickerIndex].CpName}}
+          </view>
+        </picker>
+      </view>
+      <view bindtap='chooseQuan' class="middle-top between v-center wid100" style='box-sizing:border-box'>
+        <view class='flex' style='width:95%;'>
+          <view class="zhanwei">优惠券：</view>
+          <view class='huiSea font-34'>{{quan_name}}</view>
+        </view>
+        <image src='{{jiantou}}' class='jiantou' mode='widthFix'></image>
+      </view>
+      <view class="classname" style="float:right;margin-right:4%;"></view>
+    </view>
+    <view class="footer bg-white" style='z-index:100;'>
+      <view class='wid60'>
+        <view class="font-30">折扣价: ¥{{zheMoney}}</view>
+        <view class='font-24 huiSea linethrough'>原价：￥{{money}}</view>
+      </view>
+      <button form-type="submit" class="footer-right bg-green white">提交订单</button>
+    </view>
+  </view>
+</form>

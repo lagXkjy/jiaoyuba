@@ -1,0 +1,38 @@
+<!--angli/useQuan/useQuan.wxml-->
+<!-- 优惠券可用 -->
+<!-- <view 
+bindtap='chooseQuan'
+data-item="{{666}}"
+style='background:url({{y_quan}}) no-repeat;background-size: 100% 100%;'
+class='quanbox mar-lr-30 white mar-t-30'>
+  <image src="{{item.choose ? '/images/choose.png' : ''}}" class='choosed' mode='widthFix'></image>
+  <view class='flex hei-165 v-center'>
+    <view class='font-36 mar-l-50'><text class='font-60 bold'>89</text>元</view>
+    <view class='mar-l-50'>
+      <view class='font-30'>新人优惠券</view>
+      <view class='font-20 pad-t-12'>无使用时间限制</view>
+    </view>
+  </view>
+  <view class='font-24 bottom'>请在购买优惠课程时使用</view>
+</view> -->
+<view hidden='{{count}}' class='wuwu flex v-center h-center'>暂无可用优惠券</view>
+<view 
+bindtap='chooseQuan'
+wx:for="{{quan}}"
+wx:key="{{index}}"
+hidden='{{item.CriBeUsed == 2}}'
+data-index="{{index}}"
+style='background:url({{y_quan}}) no-repeat;background-size: 100% 100%;'
+class='quanbox mar-lr-30 white mar-t-30 clear-float'>
+  <image src="{{item.choose ? '/images/choose.png' : ''}}" class='choosed' mode='widthFix'></image>
+  <view class='flex hei-165 v-center'>
+    <view class='font-36 mar-l-50'><text class='font-60 bold'>{{item.CnFValue}}</text>元</view>
+    <view class='mar-l-50'>
+      <view class='font-30'>{{item.CnTitle}}</view>
+      <view class='font-20 pad-t-12'>{{item.time}}</view>
+    </view>
+  </view>
+  <view class='font-24 bottom'>{{item.CnIntro}}</view>
+</view>
+
+

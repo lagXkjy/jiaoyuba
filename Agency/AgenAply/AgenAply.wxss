@@ -1,0 +1,65 @@
+/* Agency/AgenAply/AgenAply.wxss */
+
+.fullwidth {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.title {
+  color: #ff6b11;
+  display: block;
+  margin: 30rpx 0rpx;
+  padding-left: 40rpx;
+  font-weight: 600;
+}
+
+.btnsub {
+  width: 94%;
+  color: white;
+  font-weight: 600;
+  margin-top: 50rpx;
+}
+
+.btnsub-c {
+  background-color: #ff6b11;
+}
+
+.btnsub-n {
+  background-color: #8c8c8c;
+}
+
+.bg-color {
+  background-color: white;
+}
+
+.info {
+  width: 100%;
+  padding: 30rpx 0rpx 30rpx 35rpx;
+  border-bottom: 1rpx #F7F7F7 solid;
+  box-sizing: border-box;
+}
+
+.dispflex{
+  display: flex;
+}
+
+.iptcom{
+  font-size: 35rpx;
+}
+
+.iptview{
+  display: flex;
+  align-items: center;
+  line-height: 35rpx;
+  width:175rpx;
+}
+
+.ipt{
+  min-width:65%;
+}
+
+.kefu{
+  text-align: center;
+  margin-top: 85rpx;
+  color: #8c8c8c;
+}
